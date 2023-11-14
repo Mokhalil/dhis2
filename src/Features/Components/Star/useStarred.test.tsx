@@ -1,4 +1,4 @@
-import {IconType, useIcon} from "../Icon/useIcon";
+import {IconType} from "../Icon/useIcon";
 import {useStarred} from "./useStarred";
 
 describe('useStarred', ()=>{

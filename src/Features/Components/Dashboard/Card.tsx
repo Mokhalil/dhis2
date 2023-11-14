@@ -6,29 +6,34 @@ import Star from '../Star/Star';
 import {useAppDispatch} from "../../../App/Store/hooks";
 import {addToStarred} from "../../State/slice";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {useDashboards} from "../../Pages/useDashboards";
 
 interface DashboardProps {
     details: Details,
     isCurrent?: boolean
     isStarred?: boolean,
-    title: string
+    title: string,
+    dashboard:string
 }
 
-const Card = ({details, isStarred, title,isCurrent}: DashboardProps) => {
+const Card = ({details, isStarred, title,isCurrent,dashboard}: DashboardProps) => {
     const dispatch = useAppDispatch();
-    const {dashboardItems} = details
+    const {changeCurrentItem} = useDashboards();
     const onStarred = (id: string) => {
         console.log(`Starred ${id}`)
         dispatch(addToStarred(id))
     }
     return (
         <Accordion expanded={isCurrent}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon/>} onClick={()=>console.log('tab clicked')}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon/>} onClick={()=> {
+                changeCurrentItem(dashboard)
+                console.log('tab clicked',dashboard)
+            }}>
                 <Typography>{title}</Typography>
-                <Star starred={isStarred} onClick={onStarred} id={details.id}/>
+                <Star starred={isStarred} onClick={onStarred} id={details?.id}/>
             </AccordionSummary>
             <AccordionDetails>
-                <Items items={details.dashboardItems}/>
+                <Items items={details?.dashboardItems}/>
             </AccordionDetails>
         </Accordion>
     );

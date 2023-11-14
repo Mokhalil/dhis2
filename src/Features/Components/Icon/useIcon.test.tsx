@@ -1,5 +1,4 @@
 import {IconType, useIcon} from "./useIcon";
-import {BarChart} from "@mui/icons-material";
 
 describe('UseIcon', ()=>{
     it('should return BarChart icon if type is Visualization',()=>{

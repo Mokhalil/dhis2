@@ -6,6 +6,8 @@ interface ItemsProps{
     items : DashboardItem[]
 }
 const Items = ({items}:ItemsProps) => {
+    if(!items)
+        return null
     return (
         <>
         {

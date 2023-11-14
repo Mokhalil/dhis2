@@ -19,7 +19,6 @@ describe('Dashboard filter component', () => {
         })
     })
     it('should display the filter keyword',()=>{
-        var index = 1;
         const mockClick = jest.fn();
         const values = ['VISUALIZATION', 'MAP', 'TEXT']
         values.forEach((item) => {
