@@ -1,5 +1,4 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Dashboard} from "../../../App/Models/Dashboard";
 import agent from "../../../App/Api/agent";
 import {AxiosError} from "axios";
 import {Details} from "../../../App/Models/Details";

@@ -1,4 +1,3 @@
-import {ItemType} from "../../App/Models/Item";
 import {Dashboard} from "../../App/Models/Dashboard";
 import {Details} from "../../App/Models/Details";
 
