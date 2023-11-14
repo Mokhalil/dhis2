@@ -12,7 +12,7 @@
 - I didn't have time to fine tune the UI as well.
 
 
-
+![img.png](img.png)
 
 ## App design
 - UI Framework : MUI
