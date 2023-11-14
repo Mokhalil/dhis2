@@ -45,7 +45,7 @@ export const useDashboards = ()=>{
     }
 
     const getFilteredDashboard = ()=>{
-        if(keyword && currentDashboard){
+        if(keyword && keyword !== 'All' && currentDashboard){
             const {dashboardItems} = currentDashboard;
             const filtered = dashboardItems.filter(item=>item.type===keyword);
             return {
