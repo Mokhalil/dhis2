@@ -1,6 +1,6 @@
 import {Dashboard} from "../Models/Dashboard";
 import {Details} from "../Models/Details";
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {

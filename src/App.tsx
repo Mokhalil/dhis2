@@ -1,14 +1,12 @@
 import React, {useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {useAppDispatch} from "./App/Store/hooks";
-import {loadDashboards} from "./Features/State/thunks/loadDashboards";
 import Dashboards from './Features/Pages/Dashboards';
+import {useDashboards} from "./Features/Pages/useDashboards";
 
 function App() {
-    const dispatch = useAppDispatch();
+    const {initializeDashboard }=useDashboards();
     useEffect(() => {
-        dispatch(loadDashboards())
+        initializeDashboard();
     },[])
     return (
         <>
