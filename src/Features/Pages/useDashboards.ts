@@ -1,15 +1,16 @@
 import {useAppDispatch} from "../../App/Store/hooks";
 import {loadDashboards} from "../State/thunks/loadDashboards";
 import {useSelector} from "react-redux";
-import {getCurrent, getDetails, getLoadedDashboards, getStarred} from "../State/selectors";
+import {getCurrent, getDetails, getFilter, getLoadedDashboards, getStarred} from "../State/selectors";
 import {loadDashboardDetails} from "../State/thunks/loadDashboardDetails";
-import {addToStarred, removeFromStarred, setCurrent} from "../State/slice";
+import {addToStarred, removeFromStarred, setCurrent, setFilter} from "../State/slice";
 
 export const useDashboards = ()=>{
     const dispatch = useAppDispatch();
     const dashboards = useSelector(getLoadedDashboards)
     const currentDashboard = useSelector(getDetails);
     const starredList = useSelector(getStarred)
+    const keyword = useSelector(getFilter);
 
     const getDashboards = async ()=>{
         const results = await dispatch(loadDashboards())
@@ -39,6 +40,22 @@ export const useDashboards = ()=>{
         return starredList.findIndex(item => item === id) !== -1
     }
 
+    const setFilterKeyword = (id:string)=>{
+        dispatch(setFilter(id));
+    }
+
+    const getFilteredDashboard = ()=>{
+        if(keyword && currentDashboard){
+            const {dashboardItems} = currentDashboard;
+            const filtered = dashboardItems.filter(item=>item.type===keyword);
+            return {
+                ...currentDashboard,
+                dashboardItems : filtered
+            }
+        }
+        return currentDashboard
+    }
+
     const changeCurrentItem =  async (id:string)=>{
         await dispatch(setCurrent(id));
         await getDashboardDetails(id);
@@ -51,6 +68,9 @@ export const useDashboards = ()=>{
         currentDashboard,
         changeCurrentItem,
         isStarred,
-        makeStarred
+        makeStarred,
+        setFilterKeyword,
+        keyword,
+        getFilteredDashboard
     }
 }

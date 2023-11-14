@@ -3,7 +3,7 @@ import {MenuItem, Select, SelectChangeEvent} from "@mui/material";
 
 interface FilterProp{
     filter?:string,
-    onChange : (id:string)=>{}
+    onChange : (id:string)=>void
 }
 const Filter = ({filter, onChange}:FilterProp) => {
     return (
