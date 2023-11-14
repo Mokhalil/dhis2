@@ -1,4 +1,6 @@
 # DHIS2 Technical assessment
+
+Deployed version url : https://65534d961a05024b78e0bcd4--animated-strudel-9f9fd2.netlify.app/
 ## Finished features
 - Show the dashboards in a list of collapsible cards
 - When a dashboard is expanded, then show all the dashboard items in that dashboard
