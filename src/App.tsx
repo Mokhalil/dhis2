@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, {useEffect} from 'react';
 import './App.css';
 import Dashboards from './Features/Pages/Dashboards';
@@ -10,7 +11,9 @@ function App() {
     },[])
     return (
         <>
+            <Container maxWidth="sm">
            <Dashboards/>
+            </Container>
         </>
 
     );

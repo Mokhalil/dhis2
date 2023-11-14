@@ -3,6 +3,7 @@ import {Dashboard} from "../../../App/Models/Dashboard";
 import Card from "../Dashboard/Card";
 import {Details} from "../../../App/Models/Details";
 import {useList} from "./UseList";
+import {useDashboards} from "../../Pages/useDashboards";
 
 interface ListProps {
     dashboards : Dashboard[],
@@ -11,8 +12,7 @@ interface ListProps {
 }
 
 const List = ({dashboards, current}:ListProps) => {
-    const {isStarred} = useList();
-
+    const {isStarred} = useDashboards();
     return (
         <>
             {

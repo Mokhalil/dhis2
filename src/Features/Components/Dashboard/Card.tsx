@@ -18,16 +18,15 @@ interface DashboardProps {
 
 const Card = ({details, isStarred, title,isCurrent,dashboard}: DashboardProps) => {
     const dispatch = useAppDispatch();
-    const {changeCurrentItem} = useDashboards();
+    const {changeCurrentItem, makeStarred} = useDashboards();
     const onStarred = (id: string) => {
         console.log(`Starred ${id}`)
-        dispatch(addToStarred(id))
+        makeStarred(id);
     }
     return (
         <Accordion expanded={isCurrent}>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>} onClick={()=> {
                 changeCurrentItem(dashboard)
-                console.log('tab clicked',dashboard)
             }}>
                 <Typography>{title}</Typography>
                 <Star starred={isStarred} onClick={onStarred} id={details?.id}/>

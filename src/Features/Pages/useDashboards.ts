@@ -1,14 +1,16 @@
 import {useAppDispatch} from "../../App/Store/hooks";
 import {loadDashboards} from "../State/thunks/loadDashboards";
 import {useSelector} from "react-redux";
-import {getCurrent, getDetails, getLoadedDashboards} from "../State/selectors";
+import {getCurrent, getDetails, getLoadedDashboards, getStarred} from "../State/selectors";
 import {loadDashboardDetails} from "../State/thunks/loadDashboardDetails";
-import {setCurrent} from "../State/slice";
+import {addToStarred, removeFromStarred, setCurrent} from "../State/slice";
 
 export const useDashboards = ()=>{
     const dispatch = useAppDispatch();
     const dashboards = useSelector(getLoadedDashboards)
     const currentDashboard = useSelector(getDetails);
+    const starredList = useSelector(getStarred)
+
     const getDashboards = async ()=>{
         const results = await dispatch(loadDashboards())
         return results.payload;
@@ -26,6 +28,16 @@ export const useDashboards = ()=>{
         }
     }
 
+    const makeStarred = (id:string)=>{
+        if(isStarred(id)) {
+            dispatch(removeFromStarred(id));
+            return;
+        }
+        dispatch(addToStarred(id));
+    }
+    const isStarred = (id:string):boolean=>{
+        return starredList.findIndex(item => item === id) !== -1
+    }
 
     const changeCurrentItem =  async (id:string)=>{
         await dispatch(setCurrent(id));
@@ -37,6 +49,8 @@ export const useDashboards = ()=>{
         initializeDashboard,
         getDashboardDetails,
         currentDashboard,
-        changeCurrentItem
+        changeCurrentItem,
+        isStarred,
+        makeStarred
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ItemType} from "../../../App/Models/Item";
 import Icon from "../Icon/Icon";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 
 interface ItemProps{
     type: ItemType,
@@ -9,10 +9,12 @@ interface ItemProps{
 }
 const Item = ({type, name}:ItemProps) => {
     return (
-        <div>
+        <>
+            <Box sx={{ display: 'flex' }}>
             <Icon type={type}/>
             <Typography>{name}</Typography>
-        </div>
+            </Box>
+        </>
     );
 };
 
