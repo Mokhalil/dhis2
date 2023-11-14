@@ -3,7 +3,9 @@
 - Show the dashboards in a list of collapsible cards
 - When a dashboard is expanded, then show all the dashboard items in that dashboard
 - Ability to “star” a dashboard and persist the starred states on reload.
-- bility to filter dashboard items of a certain type
+- Ability to filter dashboard items of a certain type
+- A number of unit tests [as much as time allowed]
+![img_1.png](img_1.png)
 
 ## Outstanding features:
 - Write a test for useDashboards hook. Apologies , I haven't got round to finish it. 
